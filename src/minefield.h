@@ -21,12 +21,17 @@ void print_field(char field[][FIELD_SIZE]);
 
 // reveal_area_starting_from?
 void reveal_zeros_at(int i, int j, char field_hidden[][FIELD_SIZE], char field_visible[][FIELD_SIZE]) {
-  int dy, dx, dump;
+  int dy, dx;
 
   for(dy = -1; dy <= 1; dy++) {
     for(dx = -1; dx <= 1; dx++) {
       if(0 <= i+dy && i+dy < FIELD_SIZE && 0 <= j+dx && j+dx < FIELD_SIZE) {
         if(field_hidden[i+dy][j+dx] != MINE_SYMBOL) { // precisa dessa verificação?
+          if('1' <= field_hidden[i][j] && field_hidden[i][j] <= '9') {
+            field_visible[i][j] = field_hidden[i][j];
+            return;
+          }
+
           if(field_hidden[i+dy][j+dx] == '0' && field_visible[i+dy][j+dx] != VISITED_POSITION) {
             field_visible[i+dy][j+dx] = VISITED_POSITION;
             reveal_zeros_at(i+dy, j+dx, field_hidden, field_visible);
@@ -37,10 +42,6 @@ void reveal_zeros_at(int i, int j, char field_hidden[][FIELD_SIZE], char field_v
             && field_hidden[i][j] == '0'
           ) {
             field_visible[i+dy][j+dx] = field_hidden[i+dy][j+dx];
-          }
-
-          if('1' <= field_hidden[i][j] && field_hidden[i][j] <= '9') {
-            field_visible[i][j] = field_hidden[i][j];
           }
         }
       }

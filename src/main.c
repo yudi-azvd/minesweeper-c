@@ -9,6 +9,7 @@ void clear_screen() {
 }
 
 int main() {
+  clear_screen();
   // talvez first_i e first_j sejam melhores
   int i, j, not_allowed_i, not_allowed_j;
   int remaining_uncovered_spots = 
@@ -49,5 +50,6 @@ int main() {
   else {
     printf("\n\n\tVocê acertou uma mina... T-T\n\n");
   }
+  
   return 0;
 }

@@ -138,7 +138,13 @@ void init_field_visible(char field[][FIELD_SIZE]) {
   }
 }
 
-
+/**
+ * Ideia: criar um buffer pro print. Talvez fique mais fácil
+ * imprimir os campos visível e invisível lado a lado
+ * char buffer[MAX_BUFFER]
+ * 
+ * Aí vai inserindo em buffer os números
+ */
 void print_field(char field[][FIELD_SIZE]) {
   int i, j;
 

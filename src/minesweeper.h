@@ -5,19 +5,10 @@
 #include <time.h>
 #include <stdlib.h>
 
-
-#define FIELD_SIZE 8
-#define INITIAL_MINE_COUNT 6
-#define MINE_SYMBOL '*'
-#define EMPTY_POSITION ' '
-#define VISITED_POSITION ' '
-#define INITIAL_SYMBOL_FIELD_VISIBLE '#'
-
+#include "defs.h"
 
 char minefield_visible[FIELD_SIZE][FIELD_SIZE];
 char minefield_hidden[FIELD_SIZE][FIELD_SIZE];
-
-void print_field(char field[][FIELD_SIZE]);
 
 // reveal_area_starting_from?
 void reveal_zeros_at(int i, int j, char field_hidden[][FIELD_SIZE], char field_visible[][FIELD_SIZE]) {
@@ -138,46 +129,5 @@ void init_field_visible(char field[][FIELD_SIZE]) {
   }
 }
 
-/**
- * Ideia: criar um buffer pro print. Talvez fique mais fácil
- * imprimir os campos visível e invisível lado a lado
- * char buffer[MAX_BUFFER]
- * 
- * Aí vai inserindo em buffer os números
- */
-void print_field(char field[][FIELD_SIZE]) {
-  int i, j;
-
-  printf("\t -----------------\n");
-  for(i = 0; i < FIELD_SIZE; i++) {
-    printf("\t｜");
-    for(j = 0; j < FIELD_SIZE; j++) {
-      printf("%c ", field[i][j]);
-    }
-    printf("|\n");
-  }
-  printf("\t ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
-}
-
-
-void debug_print_field(char hidden[][FIELD_SIZE], char visible[][FIELD_SIZE]) {
-    int i, j;
-
-  printf("\t -----------------");
-  printf("  ------------------\n");
-  for(i = 0; i < FIELD_SIZE; i++) {
-    printf("\t｜");
-    for(j = 0; j < FIELD_SIZE; j++) {
-      printf("%c ", visible[i][j]);
-    }
-    printf("| |");
-    for(j = 0; j < FIELD_SIZE; j++) {
-      printf("%c ", hidden[i][j]);
-    }
-    printf("|\n");
-  }
-  printf("\t ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
-  printf("  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
-}
 
 #endif // MINEFIED_H

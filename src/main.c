@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "minefield.h"
+#include "ui.h"
+#include "minesweeper.h"
 
 // colocar em algum arquivo de UI
 void clear_screen() {
@@ -17,7 +18,8 @@ int main() {
 
   init_field_visible(minefield_visible);
 
-  print_field(minefield_visible);
+  print_field(minefield_visible, minefield_hidden, 0);
+  // debug_print_field(minefield_visible, minefield_hidden, 0);
   scanf("%d %d", &not_allowed_i, &not_allowed_j);
   // validar 
 
@@ -26,8 +28,8 @@ int main() {
   
   while(remaining_uncovered_spots) {
     clear_screen();
-    // print_field(minefield_visible);
-    debug_print_field(minefield_hidden, minefield_visible);
+    print_field(minefield_visible, minefield_hidden, 0);
+    // debug_print_field(minefield_hidden, minefield_visible, 0);
 
     scanf("%d %d", &i, &j);
     // validar 
